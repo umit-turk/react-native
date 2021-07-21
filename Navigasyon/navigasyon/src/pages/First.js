@@ -6,7 +6,7 @@ function First(props){
     console.log(props)
 
     function navigateToPage(){
-        props.navigation.navigate('SecondScreen');
+        props.navigation.navigate('SecondScreen', {username: 'ümityaşartürk'});
     }
     return(
 
