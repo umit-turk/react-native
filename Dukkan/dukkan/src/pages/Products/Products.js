@@ -7,26 +7,30 @@ import Loading from '../../components/Loading';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import useFetch from '../../hooks/useFetch/useFetch';
 import Error from '../../components/Error';
-function Products() {
+
+function Products({navigation}) {
   const {loading, data, error} = useFetch(config.API_URL);
 
-  const renderProduct = ({item}) => <ProductCard product={item} />;
+  const handleProductSelect = (id) => {
+    navigation.navigate('DetailPage', {id});
+  };
 
-  if(loading){
-      return <Loading />;
-    }
-    if(error){
-      return  <Error />;
-    }
+  const renderProduct = ({item}) => (
+    <ProductCard product={item} onSelect={() => handleProductSelect(item.id)} />//item.id yi detail sayfasına yolluyoruz.
+  );
 
-    return (
-        <View>
-            <FlatList 
-            data={data}
-            renderItem={renderProduct}
-            />
-        </View>
-    )
+  if (loading) {
+    return <Loading />;
+  }
+  if (error) {
+    return <Error />;
+  }
+
+  return (
+    <View>
+      <FlatList data={data} renderItem={renderProduct} />
+    </View>
+  );
 }
 
 export default Products;
