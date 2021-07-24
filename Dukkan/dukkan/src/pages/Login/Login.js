@@ -26,11 +26,14 @@ function Login() {
               placeholder="Kullanıcı adını giriniz..."
               value={values.username}
               onType={handleChange('username')}
+              iconName="account"
             />
             <Input
               placeholder="Şifrenizi giriniz..."
               value={values.password}
               onType={handleChange('password')}
+              iconName="key"
+              isSecure
             />
             <Button text="Giriş Yap" onPress={handleSubmit} />
           </View>
