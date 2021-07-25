@@ -1,17 +1,16 @@
-import axios from 'axios';
-import React, {useState, useEffect} from 'react';
-import {Text, View, FlatList, ActivityIndicator, Button} from 'react-native';
+import React from 'react';
+import {View, FlatList, Text} from 'react-native';
 import Config from 'react-native-config';
 import config from '../../../config';
 import Loading from '../../components/Loading';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import useFetch from '../../hooks/useFetch/useFetch';
 import Error from '../../components/Error';
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function Products({navigation}) {
-  const dispatch = useDispatch();
   const {loading, data, error} = useFetch(config.API_PRODUCT_URL);
+  const user = useSelector(s => s.user);
 
   const handleProductSelect = (id) => {
     navigation.navigate('DetailPage', {id});
@@ -30,7 +29,7 @@ function Products({navigation}) {
 
   return (
     <View>
-      <Button title="LogOut" onPress={() => dispatch({type: "SET_USER", payload: {user: null}})} />
+      <Text>Hello: {user.name.firstname}</Text>
       <FlatList data={data} renderItem={renderProduct} />
     </View>
   );
