@@ -8,7 +8,7 @@ import Error from '../../components/Error';
 
 function Detail({route}) {
     const {id} = route.params;
-    const {loading, error, data} = useFetch(`${config.API_URL}/${id}`);
+    const {loading, error, data} = useFetch(`${config.API_PRODUCT_URL}/${id}`);
     console.log(id);
 
     if(loading){

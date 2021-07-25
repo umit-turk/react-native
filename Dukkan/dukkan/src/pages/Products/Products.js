@@ -9,7 +9,7 @@ import useFetch from '../../hooks/useFetch/useFetch';
 import Error from '../../components/Error';
 
 function Products({navigation}) {
-  const {loading, data, error} = useFetch(config.API_URL);
+  const {loading, data, error} = useFetch(config.API_PRODUCT_URL);
 
   const handleProductSelect = (id) => {
     navigation.navigate('DetailPage', {id});
