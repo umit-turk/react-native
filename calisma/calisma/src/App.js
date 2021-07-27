@@ -4,6 +4,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Login from './pages/auth/Login/Login';
 import Sign from './pages/auth/Sign/Sign';
 import 'react-native-gesture-handler';
+import FlashMessage from "react-native-flash-message";
+
 
 const Stack = createStackNavigator();
 
@@ -13,6 +15,7 @@ const Stack = createStackNavigator();
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="LoginPage" component={Login} />
         <Stack.Screen name="SignPage" component={Sign} />
+        
       </Stack.Navigator>
     );
   };
@@ -22,6 +25,7 @@ const Stack = createStackNavigator();
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="AuthStack" component={AuthStack} />
       </Stack.Navigator>
+      <FlashMessage position="top" />
     </NavigationContainer>
   );
 };

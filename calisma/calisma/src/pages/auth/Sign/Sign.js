@@ -4,6 +4,9 @@ import styles from './Sign.style';
 import Input from '../../../components/Input/Input';
 import Button from '../../../components/Button/Button';
 import {Formik} from 'formik';
+import auth from '@react-native-firebase/auth';
+import {showMessage} from 'react-native-flash-message';
+import authErrorMessageParser from '../../../utils/authErrorMessageParser';
 
 const initialFormValues = {
   usermail: '',
@@ -16,8 +19,31 @@ const Sign = ({navigation}) => {
     navigation.goBack();
   }
 
-  function handleFormSubmit(formValues){
-    console.log(formValues)
+ async function handleFormSubmit(formValues) {
+    if (formValues.password !== formValues.repassword) {
+      showMessage({
+        message: 'Şifreler uyuşmuyor',
+        type: 'danger',
+      });
+      return;
+    }
+    try {
+     await auth().createUserWithEmailAndPassword(
+        formValues.usermail,
+        formValues.password,
+      );
+      navigation.navigate("LoginPage");
+      showMessage({
+        message: "Kullanıcı oluşturuldu",
+        type: 'success',
+      });
+    } catch (error) {
+      showMessage({
+        message: authErrorMessageParser(error.code),
+        type: "danger",
+      })
+    }
+    console.log(formValues);
   }
   return (
     <View style={styles.container}>
