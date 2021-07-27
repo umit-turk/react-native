@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "333168080582",
+    "project_id": "calisma-631b0",
+    "storage_bucket": "calisma-631b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333168080582:android:a4dac2cbd6d92e342209c7",
+        "android_client_info": {
+          "package_name": "com.calisma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "333168080582-8b6timb8l21hr1em7nlq8430jlbkfr61.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF7BtC_G1bXU3BJP7kTmBCJkscT937qec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "333168080582-8b6timb8l21hr1em7nlq8430jlbkfr61.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
