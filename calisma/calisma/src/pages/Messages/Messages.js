@@ -6,6 +6,8 @@ import ContentInput from '../../components/modal/ContentInput';
 
 import database from '@react-native-firebase/database';
 import auth from '@react-native-firebase/auth';
+import parseContentData from '../../utils/parseContentData';
+import MessageCard from '../../components/MessageCard/MessageCard';
 
 const Messages = () => {
   const [inputModalVisible, setInputModalVisible] = useState(false);
@@ -18,7 +20,13 @@ const Messages = () => {
       .ref('/messages/')
       .on('value', snapshot => {
         const contentData = snapshot.val()
-        console.log(contentData);
+
+        if(!contentData){
+          return;
+        }
+
+       const parsedData = parseContentData(contentData);
+       setContentList(parsedData);
       });
   }, []);
 
@@ -43,9 +51,16 @@ const Messages = () => {
     database().ref('/messages/').push(contentObj);
   }
 
+  const renderContent = ({item}) => <MessageCard message={item} />
+
+  
+
   return (
     <View style={styles.container}>
-      <FlatList />
+      <FlatList
+      data={contentList}
+      renderItem={renderContent}
+      />
       <FloatingButton onPress={handleInputToggle} />
       <ContentInput
         visible={inputModalVisible}
