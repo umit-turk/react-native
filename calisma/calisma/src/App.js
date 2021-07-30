@@ -5,6 +5,7 @@ import Login from './pages/auth/Login/Login';
 import Sign from './pages/auth/Sign/Sign';
 import 'react-native-gesture-handler';
 import FlashMessage from "react-native-flash-message";
+import Messages from './pages/Messages/Messages';
 
 
 const Stack = createStackNavigator();
@@ -23,6 +24,10 @@ const Stack = createStackNavigator();
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen 
+        name="MessagesScreen"
+        component={Messages}
+        />
         <Stack.Screen name="AuthStack" component={AuthStack} />
       </Stack.Navigator>
       <FlashMessage position="top" />
